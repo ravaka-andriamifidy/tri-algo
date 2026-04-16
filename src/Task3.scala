@@ -1,4 +1,5 @@
-import test.ShuffleArrayFactory
+import factory.ShuffleArrayFactory
+import sort.{SelectionSort, Sort}
 
 trait Sort {
   def sort(a: Array[Int]): Array[Int]

@@ -1,5 +1,6 @@
 package test
 
+import factory.{InvertedSortedArrayFactory, RandomArrayFactory, ShuffleArrayFactory}
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatest._

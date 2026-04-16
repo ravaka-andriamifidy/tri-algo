@@ -1,4 +1,4 @@
-package test
+package factory
 
 object AlmostSortedArrayFactory extends ArrayFactory{
   def create(size: Int): Array[Int] = {

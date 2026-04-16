@@ -1,5 +1,7 @@
 package test
 
+import sort.Sort
+
 /** asdfasdf
  *  */ object YSort /* */ /* extends Youpi */ extends Sort {def sort(/** *("* ")
  * */

@@ -1,4 +1,4 @@
-import test.{AlmostSortedArrayFactory, InvertedSortedArrayFactory, ShuffleArrayFactory}
+import factory.{AlmostSortedArrayFactory, InvertedSortedArrayFactory, ShuffleArrayFactory}
 
 import scala.util.Random
 

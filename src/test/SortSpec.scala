@@ -1,8 +1,10 @@
 package test
 
+import factory.{InvertedSortedArrayFactory, RandomArrayFactory, ShuffleArrayFactory}
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.prop.TableDrivenPropertyChecks
 import org.scalatest._
+import sort.SelectionSort
 
 class SortSpec extends propspec.AnyPropSpec with TableDrivenPropertyChecks with Matchers with GivenWhenThen {
   val factories =
