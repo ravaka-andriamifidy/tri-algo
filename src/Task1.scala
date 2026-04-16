@@ -1,3 +1,5 @@
+import test.{AlmostSortedArrayFactory, InvertedSortedArrayFactory, ShuffleArrayFactory}
+
 import scala.util.Random
 
 trait ArrayFactory {
