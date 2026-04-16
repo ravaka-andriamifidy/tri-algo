@@ -40,29 +40,57 @@ object ShuffleArrayFactory extends ArrayFactory{
   }
 }
 
+  //implementation le trait arrayfactory qui retourne un tableaau de taille size avec pourcentage une constante dans la classe exp 30%
 object AlmostSortedArrayFactory extends ArrayFactory{
+  private val MisplacedRatio: Double = 0.30
+
   def create(size: Int): Array[Int] = {
-    val array_int: Array[Int] = new Array[Int](size)
-    for(i <- 0 until size by 2){
-      array_int(i) = i
-      array_int(i + 1) = if (i == 0) size - 1 else size - i
+    val array_int: Array[Int] = (0 until size).toArray
+
+    if (size < 2) {
+      return array_int
     }
-    if(size % 2 != 0) array_int(size - 1) = (size - 1) / 2
+
+    val random = new Random()
+    val misplacedCount = math.max(0, math.min(size, math.round(size * MisplacedRatio).toInt))
+
+    if (misplacedCount < 2) {
+      return array_int
+    }
+
+    val indexPool = (0 until size).toArray
+    // Fisher-Yates partiel: les `misplacedCount` premiers indices deviennent une selection aleatoire sans repetition.
+    for (i <- 0 until misplacedCount) {
+      val j = i + random.nextInt(size - i)
+      val tmp = indexPool(i)
+      indexPool(i) = indexPool(j)
+      indexPool(j) = tmp
+    }
+
+    val selected = indexPool.take(misplacedCount)
+    val selectedValues = selected.map(array_int(_))
+
+    // Rotation pour garantir que tous les indices selectionnes recoivent une valeur differente.
+    for (i <- selected.indices) {
+      val source = (i + 1) % misplacedCount
+      array_int(selected(i)) = selectedValues(source)
+    }
+
     array_int
   }
 }
 
-
 class SortApplication {
   def displayArray(a: Array[Int]): Unit = {
-    println(a.mkString("{ ",", ", " }"))
+    println(a.mkString("{ ", ", ", " }"))
   }
 }
 
-object Task1 extends  App{
+object Task1 extends App {
   private val sort: SortApplication = new SortApplication()
   sort.displayArray(RandomFactory.create(4))
   sort.displayArray(InvertedSortedArrayFactory.create(4))
   sort.displayArray(ShuffleArrayFactory.create(7))
-  sort.displayArray(AlmostSortedArrayFactory.create(4))
+  sort.displayArray(AlmostSortedArrayFactory.create(10))
 }
+
