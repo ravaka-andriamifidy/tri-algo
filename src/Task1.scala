@@ -42,7 +42,22 @@ object ShuffleArrayFactory extends ArrayFactory{
   }
 }
 
-  //implementation le trait arrayfactory qui retourne un tableaau de taille size avec pourcentage une constante dans la classe exp 30%
+object ArrayTbleau extends ArrayFactory{
+  def create(size: Int): Array[Int] = {
+    val array_int: Array[Int] = new Array[Int](size)
+    for(i <- 0 until size){
+      if(i % 2 == 0){
+        array_int(i) =  i / 2
+      }
+      else{
+        array_int(i) = size - (i / 2 + 1)
+      }
+    }
+    array_int
+  }
+}
+//implementation le trait arrayfactory qui retourne un tableaau de taille size 
+//avec pourcentage une constante dans la classe exp 30%
 object AlmostSortedArrayFactory extends ArrayFactory{
   private val MisplacedRatio: Double = 0.30
 
@@ -81,6 +96,9 @@ object AlmostSortedArrayFactory extends ArrayFactory{
     array_int
   }
 }
+//tache8
+
+
 
 class SortApplication {
   def displayArray(a: Array[Int]): Unit = {
