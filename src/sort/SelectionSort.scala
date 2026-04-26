@@ -1,9 +1,5 @@
 package sort
 
-trait Sort {
-  def sort(a: Array[Int]): Array[Int]
-}
-
 object SelectionSort extends Sort{
   def sort(a: Array[Int]): Array[Int] = {
     for (i <- 0 until a.length - 1) {
