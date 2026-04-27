@@ -1,4 +1,3 @@
-import Task5.executeSort
 import factory.{AlmostSortedArrayFactory, InvertedSortedArrayFactory, RandomArrayFactory, ShuffleArrayFactory}
 import sort.{SelectionSort, YSort}
 
@@ -18,13 +17,10 @@ class SortApplication {
   }
 }
 
-object SortApplicationMain extends App {
+object SortApplication extends App {
   private val sort: SortApplication = new SortApplication()
-
-
   val factories = Array("Random", "Shuffle","Inverted", "AlmostSorted")
   val sortName = Array("YSort", "Selection")
-
 
   for(s <- sortName){
     val writer = new PrintWriter(new File(s"res/${s}_result.csv"))
@@ -40,7 +36,7 @@ object SortApplicationMain extends App {
           else if (factory == "InvertedSortedArrayFactory")  InvertedSortedArrayFactory.create(size)
           else AlmostSortedArrayFactory.create(size)
 
-        execution_time = executeSort(size, array, factory)
+        execution_time = sort.executeSort(size, array, factory)
         times.append(execution_time.toString)
       }
       writer.write(s"$size,${times.mkString(",")}\n")
