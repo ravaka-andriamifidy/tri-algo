@@ -34,13 +34,13 @@ class ArrayFactorySpec extends propspec.AnyPropSpec with TableDrivenPropertyChec
     }
   }
 
-  val invertedSortedArrayFactoryValues =
-    Table(
-      "invertedSortedArrayFactoryValues",
-      Array(0),
-      (1 to 0 by -1).toArray,
-      (177 to 0 by -1).toArray,
-    )
+   val invertedSortedArrayFactoryValues =
+     Table(
+       "invertedSortedArrayFactoryValues",
+       Array(0),
+       (1 to 0 by -1).toArray,
+       (177 to 0 by -1).toArray
+     )
 
   property("The InvertedSortedArrayFactory should create arrays that looks like") {
     forAll(invertedSortedArrayFactoryValues) { v =>

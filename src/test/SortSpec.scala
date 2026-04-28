@@ -15,15 +15,15 @@ class SortSpec extends propspec.AnyPropSpec with TableDrivenPropertyChecks with 
       ShuffleArrayFactory
     )
 
-  val sizes =
-    Table(
-      "sizes",
-      0,
-      1,
-      10,
-      100,
-      43334,
-    )
+   val sizes =
+     Table(
+       "sizes",
+       0,
+       1,
+       10,
+       100,
+       43334
+     )
 
   property("Selection sort should sort arrays") {
     forAll(factories) { f => {
